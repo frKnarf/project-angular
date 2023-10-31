@@ -1,0 +1,21 @@
+<div *ngFor="let question of questions">
+  <h3>{{ question.text }}</h3>
+  <ul>
+    <li *ngFor="let option of question.options">
+      <label>
+        <input
+          type="radio"
+          name="answer"
+          [value]="option"
+          (change)="selectAnswer(question, option)"
+        />
+        {{ option }}
+      </label>
+    </li>
+  </ul>
+</div>
+<button (click)="submitAnswers()">Submit</button>
+
+<div *ngIf="score !== null">
+  <h2>Your Score: {{ score }} / {{ questions.length }}</h2>
+</div>
